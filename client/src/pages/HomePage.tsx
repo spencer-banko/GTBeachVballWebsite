@@ -80,15 +80,15 @@ export const HomePage: React.FC = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
               <div className="card text-center">
-                <div className="text-3xl font-bold text-gt-gold mb-2">50+</div>
+                <div className="text-3xl font-bold text-gt-gold mb-2">26</div>
                 <div className="text-gray-600">Active Members</div>
               </div>
               <div className="card text-center">
-                <div className="text-3xl font-bold text-gt-gold mb-2">3x</div>
+                <div className="text-3xl font-bold text-gt-gold mb-2">2-3</div>
                 <div className="text-gray-600">Weekly Practices</div>
               </div>
               <div className="card text-center">
-                <div className="text-3xl font-bold text-gt-gold mb-2">10+</div>
+                <div className="text-3xl font-bold text-gt-gold mb-2">5-10</div>
                 <div className="text-gray-600">Tournaments/Year</div>
               </div>
             </div>

@@ -112,6 +112,8 @@ export const sponsorsApi = {
   activate: (id: string) => apiRequest<Sponsor>('POST', `/sponsors/admin/${id}/activate`),
   submitInquiry: (data: CreateSponsorInquiryData) => 
     apiRequest<SponsorInquiry>('POST', '/sponsors/inquiry', data),
+  getInquiries: (page = 1, limit = 10) => 
+    apiRequest<PaginatedResponse<SponsorInquiry>>('GET', `/sponsors/admin/inquiries?page=${page}&limit=${limit}`),
 };
 
 // API functions for interest submissions

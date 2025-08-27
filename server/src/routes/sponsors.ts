@@ -8,7 +8,7 @@ import {
   deleteSponsor,
   activateSponsor,
 } from '../controllers/sponsorController';
-import { submitSponsorInquiry } from '../controllers/sponsorInquiryController';
+import { submitSponsorInquiry, getSponsorInquiries } from '../controllers/sponsorInquiryController';
 import { protect } from '../middleware/auth';
 
 const router = express.Router();
@@ -25,5 +25,6 @@ router.post('/admin', createSponsor);
 router.put('/admin/:id', updateSponsor);
 router.delete('/admin/:id', deleteSponsor);
 router.post('/admin/:id/activate', activateSponsor);
+router.get('/admin/inquiries', getSponsorInquiries);
 
 export default router;

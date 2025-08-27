@@ -2,8 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { interestApi } from '../utils/api';
-import { InterestSubmission } from '../types';
+import { interestApi, sponsorsApi } from '../utils/api';
+import { InterestSubmission, SponsorInquiry } from '../types';
 
 // Placeholder components for admin sections
 const DashboardHome = () => (
@@ -32,6 +32,85 @@ const SponsorsManager = () => (
     </p>
   </div>
 );
+
+const SponsorInquiries = () => {
+  const [inquiries, setInquiries] = React.useState<SponsorInquiry[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchInquiries = async () => {
+      try {
+        const data = await sponsorsApi.getInquiries();
+        setInquiries(data.data || []);
+      } catch (err) {
+        console.error('Error fetching inquiries:', err);
+        setError('Error loading inquiries');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInquiries();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="card">
+        <h2 className="text-2xl font-bold text-gt-navy mb-4">Sponsor Inquiries</h2>
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <h2 className="text-2xl font-bold text-gt-navy mb-4">Sponsor Inquiries</h2>
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="card">
+      <h2 className="text-2xl font-bold text-gt-navy mb-4">Sponsor Inquiries</h2>
+      {inquiries.length === 0 ? (
+        <p className="text-gray-600">No inquiries found.</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {inquiries.map((inquiry: SponsorInquiry) => (
+                <tr key={inquiry.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{inquiry.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{inquiry.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{inquiry.company || '-'}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 max-w-xs truncate">{inquiry.message}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {new Date(inquiry.createdAt).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const InterestSubmissions = () => {
   const [submissions, setSubmissions] = React.useState<InterestSubmission[]>([]);
@@ -167,6 +246,12 @@ export const AdminDashboardPage: React.FC = () => {
                   Sponsors
                 </Link>
                 <Link
+                  to="/admin/sponsor-inquiries"
+                  className="block px-4 py-2 rounded-lg text-gt-navy hover:bg-gt-gold/10 transition-colors duration-200"
+                >
+                  Sponsor Inquiries
+                </Link>
+                <Link
                   to="/admin/interest"
                   className="block px-4 py-2 rounded-lg text-gt-navy hover:bg-gt-gold/10 transition-colors duration-200"
                 >
@@ -181,6 +266,7 @@ export const AdminDashboardPage: React.FC = () => {
                 <Route path="/" element={<DashboardHome />} />
                 <Route path="/executives" element={<ExecutivesManager />} />
                 <Route path="/sponsors" element={<SponsorsManager />} />
+                <Route path="/sponsor-inquiries" element={<SponsorInquiries />} />
                 <Route path="/interest" element={<InterestSubmissions />} />
               </Routes>
             </div>
