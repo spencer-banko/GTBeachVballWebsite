@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/database';
 import { errorHandler } from './middleware/errorHandler';
 import { notFound } from './middleware/notFound';
+import { ensureDBConnection } from './middleware/database';
 
 // Routes
 import authRoutes from './routes/auth';
@@ -55,16 +56,31 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+app.get('/health', async (req, res) => {
+  try {
+    // Ensure database is connected
+    await connectDB();
+    res.status(200).json({ 
+      status: 'OK', 
+      timestamp: new Date().toISOString(),
+      database: 'connected'
+    });
+  } catch (error) {
+    console.error('Health check failed:', error);
+    res.status(500).json({ 
+      status: 'ERROR', 
+      timestamp: new Date().toISOString(),
+      error: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
 });
 
-// API routes
-app.use('/api/auth', authRoutes);
-app.use('/api/execs', execRoutes);
-app.use('/api/sponsors', sponsorRoutes);
-app.use('/api/interest', interestRoutes);
-app.use('/api/admin', adminRoutes);
+// API routes with database connection middleware
+app.use('/api/auth', ensureDBConnection, authRoutes);
+app.use('/api/execs', ensureDBConnection, execRoutes);
+app.use('/api/sponsors', ensureDBConnection, sponsorRoutes);
+app.use('/api/interest', ensureDBConnection, interestRoutes);
+app.use('/api/admin', ensureDBConnection, adminRoutes);
 
 // Error handling middleware
 app.use(notFound);
