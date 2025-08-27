@@ -110,7 +110,7 @@ export const HomePage: React.FC = () => {
                 className="w-full h-80 object-cover rounded-2xl shadow-lg"
               />
               <p className="text-center text-gray-600 font-medium">
-                Our amazing team at the 2024 Spring Tournament
+                Our Amazing Execs
               </p>
             </div>
             <div className="space-y-4">
@@ -120,7 +120,7 @@ export const HomePage: React.FC = () => {
                 className="w-full h-80 object-cover rounded-2xl shadow-lg"
               />
               <p className="text-center text-gray-600 font-medium">
-                Intense practice session preparing for competition
+                Fall 2025 Tryouts
               </p>
             </div>
           </div>
