@@ -30,7 +30,6 @@ export const connectDB = async (): Promise<void> => {
     // Create new connection with optimized settings for serverless
     cached.promise = mongoose.connect(mongoURI, {
       bufferCommands: false,
-      bufferMaxEntries: 0,
       maxPoolSize: 1,
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
