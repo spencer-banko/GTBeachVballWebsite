@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: gt-volleyball-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    volumes:
+      - mongodb_data:/data/db
+      - ./server/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: gt-volleyball-server
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGODB_URI=mongodb://admin:password123@mongodb:27017/gt-volleyball?authSource=admin
+      - PORT=3001
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+      - ADMIN_USER=admin
+      - ADMIN_PASS=password123
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: gt-volleyball-client
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    environment:
+      - VITE_API_BASE_URL=http://localhost:3001
+
+volumes:
+  mongodb_data:
