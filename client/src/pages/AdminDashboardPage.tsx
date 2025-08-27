@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { interestApi } from '../utils/api';
+import { InterestSubmission } from '../types';
 
 // Placeholder components for admin sections
 const DashboardHome = () => (
@@ -33,7 +34,7 @@ const SponsorsManager = () => (
 );
 
 const InterestSubmissions = () => {
-  const [submissions, setSubmissions] = React.useState([]);
+  const [submissions, setSubmissions] = React.useState<InterestSubmission[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState('');
 
@@ -93,7 +94,7 @@ const InterestSubmissions = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {submissions.map((submission: any) => (
+              {submissions.map((submission: InterestSubmission) => (
                 <tr key={submission.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{submission.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{submission.email}</td>
