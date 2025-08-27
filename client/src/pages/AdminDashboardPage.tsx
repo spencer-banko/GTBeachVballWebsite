@@ -31,14 +31,96 @@ const SponsorsManager = () => (
   </div>
 );
 
-const InterestSubmissions = () => (
-  <div className="card">
-    <h2 className="text-2xl font-bold text-gt-navy mb-4">Interest Submissions</h2>
-    <p className="text-gray-600">
-      View and manage interest form submissions from potential members.
-    </p>
-  </div>
-);
+const InterestSubmissions = () => {
+  const [submissions, setSubmissions] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState('');
+
+  React.useEffect(() => {
+    const fetchSubmissions = async () => {
+      try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch('/api/interest/admin', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        if (data.success) {
+          setSubmissions(data.data.data || []);
+        } else {
+          setError('Failed to fetch submissions');
+        }
+      } catch (err) {
+        setError('Error loading submissions');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSubmissions();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="card">
+        <h2 className="text-2xl font-bold text-gt-navy mb-4">Interest Submissions</h2>
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <h2 className="text-2xl font-bold text-gt-navy mb-4">Interest Submissions</h2>
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="card">
+      <h2 className="text-2xl font-bold text-gt-navy mb-4">Interest Submissions</h2>
+      {submissions.length === 0 ? (
+        <p className="text-gray-600">No submissions found.</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Affiliation</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Experience</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {submissions.map((submission: any) => (
+                <tr key={submission.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{submission.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{submission.email}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{submission.phone || '-'}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{submission.affiliation}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{submission.experienceLevel}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {new Date(submission.createdAt).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const AdminDashboardPage: React.FC = () => {
   const { isAuthenticated, logout } = useAuth();

@@ -6,9 +6,13 @@ import { CreateInterestSubmissionData, PaginatedResponse, IInterestSubmission } 
 // Submit interest form (public)
 export const submitInterest = async (req: Request, res: Response): Promise<void> => {
   try {
+    console.log('Interest form submission received:', req.body);
+    
     const data: CreateInterestSubmissionData = validateSchema(createInterestSubmissionSchema, req.body);
+    console.log('Validated data:', data);
 
     const submission = await InterestSubmission.create(data);
+    console.log('Created submission:', submission);
 
     res.status(201).json({
       success: true,
@@ -16,6 +20,7 @@ export const submitInterest = async (req: Request, res: Response): Promise<void>
       message: 'Interest form submitted successfully!',
     });
   } catch (error) {
+    console.error('Interest form submission error:', error);
     res.status(400).json({
       success: false,
       error: error instanceof Error ? error.message : 'Failed to submit interest form',

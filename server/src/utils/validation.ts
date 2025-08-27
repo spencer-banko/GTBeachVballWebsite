@@ -29,7 +29,7 @@ export const updateSponsorSchema = createSponsorSchema.partial();
 export const createInterestSubmissionSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100, 'Name cannot exceed 100 characters'),
   email: z.string().email('Invalid email format'),
-  phone: z.string().regex(/^[\+]?[1-9][\d]{0,15}$/, 'Please enter a valid phone number').optional(),
+  phone: z.string().regex(/^[\+]?[1-9][\d\s\-\(\)]{0,20}$/, 'Please enter a valid phone number').optional(),
   affiliation: z.enum(['GT Student', 'Other'], {
     errorMap: () => ({ message: 'Affiliation must be either "GT Student" or "Other"' }),
   }),

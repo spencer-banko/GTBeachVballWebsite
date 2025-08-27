@@ -46,11 +46,14 @@ export const apiRequest = async <T>(
   data?: any
 ): Promise<T> => {
   try {
+    console.log(`Making ${method} request to ${url}`, data);
     const response = await api.request<ApiResponse<T>>({
       method,
       url,
       data,
     });
+    
+    console.log('API response:', response.data);
     
     if (response.data.success) {
       return response.data.data as T;
@@ -58,6 +61,7 @@ export const apiRequest = async <T>(
       throw new Error(response.data.error || 'Request failed');
     }
   } catch (error: any) {
+    console.error('API request error:', error);
     if (error.response?.data?.error) {
       throw new Error(error.response.data.error);
     }

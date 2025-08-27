@@ -30,7 +30,7 @@ export const InterestPage: React.FC = () => {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (formData.phone && !/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+    if (formData.phone && !/^[\+]?[1-9][\d\s\-\(\)]{0,20}$/.test(formData.phone)) {
       newErrors.phone = 'Please enter a valid phone number';
     }
 
@@ -54,8 +54,11 @@ export const InterestPage: React.FC = () => {
     }
 
     setIsSubmitting(true);
+    console.log('Submitting form data:', formData);
+    
     try {
-      await interestApi.submit(formData);
+      const result = await interestApi.submit(formData);
+      console.log('Form submission successful:', result);
       setIsSubmitted(true);
       setFormData({
         name: '',
@@ -66,6 +69,7 @@ export const InterestPage: React.FC = () => {
         notes: '',
       });
     } catch (error: any) {
+      console.error('Form submission error:', error);
       setErrors({ submit: error.message });
     } finally {
       setIsSubmitting(false);
