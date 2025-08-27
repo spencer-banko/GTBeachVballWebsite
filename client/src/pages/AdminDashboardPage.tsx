@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { interestApi } from '../utils/api';
 
 // Placeholder components for admin sections
 const DashboardHome = () => (
@@ -39,20 +40,10 @@ const InterestSubmissions = () => {
   React.useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const token = localStorage.getItem('authToken');
-        const response = await fetch('/api/interest/admin', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
-        if (data.success) {
-          setSubmissions(data.data.data || []);
-        } else {
-          setError('Failed to fetch submissions');
-        }
+        const data = await interestApi.getAdmin();
+        setSubmissions(data.data || []);
       } catch (err) {
+        console.error('Error fetching submissions:', err);
         setError('Error loading submissions');
       } finally {
         setLoading(false);
