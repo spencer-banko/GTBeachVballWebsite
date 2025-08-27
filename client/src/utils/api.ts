@@ -1,5 +1,21 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { ApiResponse } from '../types';
+import { 
+  ApiResponse, 
+  Executive, 
+  CreateExecutiveData, 
+  UpdateExecutiveData,
+  Sponsor, 
+  CreateSponsorData, 
+  UpdateSponsorData,
+  SponsorInquiry,
+  CreateSponsorInquiryData,
+  InterestSubmission,
+  CreateInterestSubmissionData,
+  PaginatedResponse,
+  LoginData,
+  AuthResponse,
+  DashboardStats
+} from '../types';
 
 // Create axios instance
 const api: AxiosInstance = axios.create({
