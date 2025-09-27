@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { execsApi, sponsorsApi } from '../utils/api';
-import { Executive, Sponsor } from '../types';
+import { sponsorsApi } from '../utils/api';
+import { Sponsor } from '../types';
+import { executives } from '../data/executives';
 
 export const HomePage: React.FC = () => {
-  const [executives, setExecutives] = useState<Executive[]>([]);
   const [activeSponsor, setActiveSponsor] = useState<Sponsor | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [execsData, sponsorData] = await Promise.all([
-          execsApi.getAll(),
-          sponsorsApi.getActive(),
-        ]);
-        setExecutives(execsData.slice(0, 3)); // Show top 3 execs
+        const sponsorData = await sponsorsApi.getActive();
         setActiveSponsor(sponsorData);
       } catch (error) {
-        console.error('Error fetching home page data:', error);
-      } finally {
-        setIsLoading(false);
+        console.error('Error fetching sponsor data:', error);
       }
     };
 
@@ -194,35 +187,22 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
           
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="card animate-pulse">
-                  <div className="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
-                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
-                  <div className="h-3 bg-gray-300 rounded mb-2"></div>
-                  <div className="h-3 bg-gray-300 rounded w-3/4"></div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {executives.map((exec) => (
-                <div key={exec.id} className="card text-center">
-                  <img
-                    src={exec.photoUrl}
-                    alt={exec.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                  />
-                  <h3 className="font-semibold text-gt-navy mb-1">{exec.name}</h3>
-                  <p className="text-gt-gold font-medium mb-3">{exec.role}</p>
-                  <p className="text-gray-600 text-sm line-clamp-3">
-                    {exec.bio}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {executives.slice(0, 3).map((exec) => (
+              <div key={exec.id} className="card text-center">
+                <img
+                  src={exec.photoUrl}
+                  alt={exec.name}
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="font-semibold text-gt-navy mb-1">{exec.name}</h3>
+                <p className="text-gt-gold font-medium mb-3">{exec.role}</p>
+                <p className="text-gray-600 text-sm line-clamp-3">
+                  {exec.bio}
+                </p>
+              </div>
+            ))}
+          </div>
           
           <div className="text-center mt-8">
             <Link to="/execs" className="btn-outline">

@@ -6,15 +6,15 @@ import { useState } from 'react';
 const faqs = [
   {
     question: 'What skill level do I need to join?',
-    answer: 'We welcome players of all skill levels! Whether you\'re a complete beginner or an experienced player, we have opportunities for everyone. We offer different practice sessions and training programs to help you improve.',
+    answer: 'We\'re looking for experienced players who already have the fundamentals mastered. Our club focuses on competitive play and tournament preparation.',
   },
   {
     question: 'When and where are practices held?',
-    answer: 'Practices are typically held 3 times per week at the Georgia Tech Campus Recreation Center outdoor courts. Specific times vary by semester and are announced at the beginning of each term.',
+    answer: 'Practices are held twice a week at the Georgia Tech Campus Recreation Center outdoor courts. Specific times vary by semester and are announced at the beginning of each term.',
   },
   {
     question: 'Are there tryouts?',
-    answer: 'No, we don\'t hold tryouts! We believe in inclusivity and welcome all interested students. However, we do have different teams for various skill levels and tournament competitions.',
+    answer: 'Yes, there are tryouts and they are held at the beginning of each semester. Watch our Instagram for updates on tryout dates and times.',
   },
   {
     question: 'What equipment do I need?',
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: 'How much are dues?',
-    answer: 'Club dues are $50 per semester, which covers equipment, tournament entry fees, and administrative costs. We also offer payment plans and scholarships for students in need.',
+    answer: 'We currently do not have dues. All equipment and tournament entry fees are covered by the club.',
   },
   {
     question: 'Do you compete in tournaments?',
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     question: 'Can I join mid-semester?',
-    answer: 'Absolutely! You can join at any time during the semester. We\'ll help you get up to speed and integrate you into the team.',
+    answer: 'No, you cannot join mid-semester. You can only join through tryouts at the beginning of each semester.',
   },
   {
     question: 'What if I can\'t make all practices?',
