@@ -48,8 +48,8 @@ export const TeamPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Team Information - GT Beach Volleyball Club</title>
-        <meta name="description" content="Learn about the GT Beach Volleyball Club team, practice schedules, tournaments, and frequently asked questions." />
+        <title>Team Information - Beach Volleyball Club at Georgia Tech</title>
+        <meta name="description" content="Learn about the Beach Volleyball Club at Georgia Tech team, practice schedules, tournaments, and frequently asked questions." />
       </Helmet>
 
       <div className="pt-16">
@@ -62,7 +62,7 @@ export const TeamPage: React.FC = () => {
               </h1>
               <p className="text-xl text-gray-600">
                 Everything you need to know about joining and participating in the 
-                GT Beach Volleyball Club
+                Beach Volleyball Club at Georgia Tech
               </p>
             </div>
           </div>
@@ -77,19 +77,15 @@ export const TeamPage: React.FC = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="card">
-                  <h3 className="text-xl font-semibold text-gt-navy mb-4">Spring 2024</h3>
+                  <h3 className="text-xl font-semibold text-gt-navy mb-4">Current Schedule</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="font-medium">Monday</span>
-                      <span className="text-gray-600">6:00 PM - 8:00 PM</span>
+                      <span className="font-medium">Sunday</span>
+                      <span className="text-gray-600">11:30 AM - 1:00 PM</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="font-medium">Wednesday</span>
-                      <span className="text-gray-600">6:00 PM - 8:00 PM</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">Friday</span>
-                      <span className="text-gray-600">4:00 PM - 6:00 PM</span>
+                      <span className="font-medium">Tuesday</span>
+                      <span className="text-gray-600">8:00 PM - 9:30 PM</span>
                     </div>
                   </div>
                   <p className="text-sm text-gray-500 mt-4">
@@ -209,7 +205,7 @@ export const TeamPage: React.FC = () => {
                     <div className="text-gt-gold text-xl">✓</div>
                     <div>
                       <h4 className="font-semibold text-gt-navy">Team Uniform</h4>
-                      <p className="text-gray-600">Official GT Beach Volleyball Club uniform</p>
+                      <p className="text-gray-600">Official Beach Volleyball Club at Georgia Tech uniform</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">

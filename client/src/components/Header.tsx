@@ -47,11 +47,11 @@ export const Header: React.FC = () => {
           <Link to="/" className="flex items-center space-x-3">
             <img
               src="/images/logo.png"
-              alt="GT Beach Volleyball Club"
+              alt="Beach Volleyball Club at Georgia Tech"
               className="h-10 w-auto"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-gt-navy">GT Beach Volleyball</h1>
+              <h1 className="text-lg font-bold text-gt-navy">Beach Volleyball at GT</h1>
             </div>
           </Link>
 

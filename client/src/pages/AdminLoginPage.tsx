@@ -36,7 +36,7 @@ export const AdminLoginPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Admin Login - GT Beach Volleyball Club</title>
+        <title>Admin Login - Beach Volleyball Club at Georgia Tech</title>
       </Helmet>
 
       <div className="pt-16 section-padding">

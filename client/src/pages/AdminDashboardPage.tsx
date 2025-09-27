@@ -203,7 +203,7 @@ export const AdminDashboardPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Admin Dashboard - GT Beach Volleyball Club</title>
+        <title>Admin Dashboard - Beach Volleyball Club at Georgia Tech</title>
       </Helmet>
 
       <div className="pt-16">

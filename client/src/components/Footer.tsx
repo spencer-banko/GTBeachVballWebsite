@@ -14,10 +14,10 @@ export const Footer: React.FC = () => {
             <div className="flex items-center space-x-3 mb-4">
               <img
                 src="/images/logo.png"
-                alt="GT Beach Volleyball Club"
+                alt="Beach Volleyball Club at Georgia Tech"
                 className="h-8 w-auto"
               />
-              <h3 className="text-lg font-bold">GT Beach Volleyball</h3>
+              <h3 className="text-lg font-bold">Beach Volleyball at GT</h3>
             </div>
             <p className="text-gray-300 mb-4">
               Building a strong beach volleyball community at Georgia Tech. 
@@ -26,10 +26,10 @@ export const Footer: React.FC = () => {
             <div className="flex items-center space-x-2 text-gray-300">
               <EnvelopeIcon className="h-5 w-5" />
               <a 
-                href="mailto:beachvolleyball@gatech.edu"
+                href="mailto:spencerbanko@gmail.com"
                 className="hover:text-gt-gold transition-colors duration-200"
               >
-                beachvolleyball@gatech.edu
+                spencerbanko@gmail.com
               </a>
             </div>
           </div>
@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Interested in Joining?</h4>
             <p className="text-gray-300 mb-4">
-              Ready to spike, serve, and score with the GT Beach Volleyball Club? 
+              Ready to spike, serve, and score with the Beach Volleyball Club at Georgia Tech? 
               Fill out our interest form and we'll get back to you!
             </p>
             <Link
@@ -92,11 +92,11 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-300 text-sm">
-            © {currentYear} Georgia Tech Beach Volleyball Club. All rights reserved.
+            © {currentYear} Beach Volleyball Club at Georgia Tech. All rights reserved.
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <a
-              href="https://instagram.com/gtbeachvolleyball"
+              href="https://www.instagram.com/beachvballclubatgt/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-gt-gold transition-colors duration-200"
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
             <a
-              href="mailto:beachvolleyball@gatech.edu"
+              href="mailto:spencerbanko@gmail.com"
               className="text-gray-300 hover:text-gt-gold transition-colors duration-200"
             >
               <span className="sr-only">Email</span>

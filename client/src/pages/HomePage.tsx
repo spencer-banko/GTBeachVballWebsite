@@ -31,7 +31,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Georgia Tech Beach Volleyball Club - Home</title>
+        <title>Beach Volleyball Club at Georgia Tech - Home</title>
         <meta name="description" content="Join the Georgia Tech Beach Volleyball Club! We welcome players of all skill levels. Practice, compete, and build lasting friendships." />
       </Helmet>
 
@@ -42,12 +42,12 @@ export const HomePage: React.FC = () => {
             <div className="flex justify-center mb-8">
               <img
                 src="/images/logo.png"
-                alt="GT Beach Volleyball Club Logo"
+                alt="Beach Volleyball Club at Georgia Tech Logo"
                 className="h-24 w-auto"
               />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gt-navy mb-6">
-              Georgia Tech Beach Volleyball Club
+              Beach Volleyball Club at Georgia Tech
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Building a strong beach volleyball community at Georgia Tech. 
@@ -73,14 +73,14 @@ export const HomePage: React.FC = () => {
               About the Team
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              The Georgia Tech Beach Volleyball Club is a student-run organization dedicated to 
+              The Beach Volleyball Club at Georgia Tech is a student-run organization dedicated to 
               promoting beach volleyball on campus. We welcome players of all skill levels, from 
               complete beginners to experienced competitors. Our club provides opportunities for 
               practice, skill development, tournament competition, and social events.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
               <div className="card text-center">
-                <div className="text-3xl font-bold text-gt-gold mb-2">26</div>
+                <div className="text-3xl font-bold text-gt-gold mb-2">27</div>
                 <div className="text-gray-600">Active Members</div>
               </div>
               <div className="card text-center">
@@ -105,8 +105,8 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-4">
               <img
-                src="/images/team.jpg"
-                alt="GT Beach Volleyball Team"
+                src="/images/TeamImage1.png"
+                alt="Beach Volleyball Club at Georgia Tech Team"
                 className="w-full h-80 object-cover rounded-2xl shadow-lg"
               />
               <p className="text-center text-gray-600 font-medium">
@@ -115,7 +115,7 @@ export const HomePage: React.FC = () => {
             </div>
             <div className="space-y-4">
               <img
-                src="/images/practice.jpg"
+                src="/images/TeamImage2.png"
                 alt="Team Practice Session"
                 className="w-full h-80 object-cover rounded-2xl shadow-lg"
               />

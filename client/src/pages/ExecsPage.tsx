@@ -25,8 +25,8 @@ export const ExecsPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Executive Board - GT Beach Volleyball Club</title>
-        <meta name="description" content="Meet the executive board of the GT Beach Volleyball Club. Learn about our leadership team and their roles in managing the club." />
+        <title>Executive Board - Beach Volleyball Club at Georgia Tech</title>
+        <meta name="description" content="Meet the executive board of the Beach Volleyball Club at Georgia Tech. Learn about our leadership team and their roles in managing the club." />
       </Helmet>
 
       <div className="pt-16">
@@ -38,7 +38,7 @@ export const ExecsPage: React.FC = () => {
                 Executive Board
               </h1>
               <p className="text-xl text-gray-600">
-                Meet the dedicated team that makes the GT Beach Volleyball Club run smoothly
+                Meet the dedicated team that makes the Beach Volleyball Club at Georgia Tech run smoothly
               </p>
             </div>
           </div>
@@ -120,7 +120,7 @@ export const ExecsPage: React.FC = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="mailto:beachvolleyball@gatech.edu"
+                  href="mailto:spencerbanko@gmail.com"
                   className="btn-primary"
                 >
                   Email the Club

@@ -6,7 +6,7 @@ export const NotFoundPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found - GT Beach Volleyball Club</title>
+        <title>Page Not Found - Beach Volleyball Club at Georgia Tech</title>
       </Helmet>
 
       <div className="pt-16 section-padding">

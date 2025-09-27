@@ -89,7 +89,7 @@ export const SponsorsPage: React.FC = () => {
     return (
       <>
         <Helmet>
-          <title>Sponsor Inquiry Submitted - GT Beach Volleyball Club</title>
+          <title>Sponsor Inquiry Submitted - Beach Volleyball Club at Georgia Tech</title>
         </Helmet>
         
         <div className="pt-16 section-padding">
@@ -101,7 +101,7 @@ export const SponsorsPage: React.FC = () => {
               </h1>
               <p className="text-lg text-gray-600 mb-8">
                 Your sponsor inquiry has been submitted successfully. We'll be in touch soon 
-                to discuss sponsorship opportunities with the GT Beach Volleyball Club!
+                to discuss sponsorship opportunities with the Beach Volleyball Club at Georgia Tech!
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
@@ -119,8 +119,8 @@ export const SponsorsPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Sponsors - GT Beach Volleyball Club</title>
-        <meta name="description" content="Learn about sponsorship opportunities with the GT Beach Volleyball Club. Support student athletes and gain brand visibility." />
+        <title>Sponsors - Beach Volleyball Club at Georgia Tech</title>
+        <meta name="description" content="Learn about sponsorship opportunities with the Beach Volleyball Club at Georgia Tech. Support student athletes and gain brand visibility." />
       </Helmet>
 
       <div className="pt-16">

@@ -90,7 +90,7 @@ export const InterestPage: React.FC = () => {
     return (
       <>
         <Helmet>
-          <title>Interest Form Submitted - GT Beach Volleyball Club</title>
+          <title>Interest Form Submitted - Beach Volleyball Club at Georgia Tech</title>
         </Helmet>
         
         <div className="pt-16 section-padding">
@@ -102,7 +102,7 @@ export const InterestPage: React.FC = () => {
               </h1>
               <p className="text-lg text-gray-600 mb-8">
                 Your interest form has been submitted successfully. We'll be in touch soon 
-                with more information about joining the GT Beach Volleyball Club!
+                with more information about joining the Beach Volleyball Club at Georgia Tech!
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
@@ -120,8 +120,8 @@ export const InterestPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Join Our Team - GT Beach Volleyball Club</title>
-        <meta name="description" content="Interested in joining the GT Beach Volleyball Club? Fill out our interest form and we'll get back to you with details about practices, tournaments, and membership." />
+        <title>Join Our Team - Beach Volleyball Club at Georgia Tech</title>
+        <meta name="description" content="Interested in joining the Beach Volleyball Club at Georgia Tech? Fill out our interest form and we'll get back to you with details about practices, tournaments, and membership." />
       </Helmet>
 
       <div className="pt-16 section-padding">
@@ -132,7 +132,7 @@ export const InterestPage: React.FC = () => {
                 Join Our Team
               </h1>
               <p className="text-lg text-gray-600">
-                Ready to spike, serve, and score with the GT Beach Volleyball Club? 
+                Ready to spike, serve, and score with the Beach Volleyball Club at Georgia Tech? 
                 Fill out the form below and we'll get back to you!
               </p>
             </div>
@@ -286,10 +286,10 @@ export const InterestPage: React.FC = () => {
               <p className="text-gray-600">
                 Questions? Contact us at{' '}
                 <a 
-                  href="mailto:beachvolleyball@gatech.edu"
+                  href="mailto:spencerbanko@gmail.com"
                   className="text-gt-gold hover:text-gt-gold/80 transition-colors duration-200"
                 >
-                  beachvolleyball@gatech.edu
+                  spencerbanko@gmail.com
                 </a>
               </p>
             </div>
